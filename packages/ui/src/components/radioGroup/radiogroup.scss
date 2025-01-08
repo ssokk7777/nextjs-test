@@ -1,0 +1,13 @@
+.storybook-radio-group {
+  &-row {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+  }
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}

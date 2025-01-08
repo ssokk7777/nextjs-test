@@ -1,0 +1,91 @@
+@use '../../styles/ktcTheme' as ktcTheme;
+
+.ktc-stepper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 38px;
+}
+
+.ktc-stepper-step {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &-first {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+  }
+}
+
+.ktc-stepper-step-wrapper {
+  display: flex;
+  justify-content: center;
+
+  .ktc-stepper-step-number {
+    border-radius: 50%;
+    min-width: 28px;
+    min-height: 28px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: var(--ktc-font-size-xs);
+    font-weight: var(--ktc-font-weight-semibold);
+    //cursor: pointer;
+
+    &-prev {
+      background-color: var(--ktc-color-primary);
+      color: var(--ktc-color-white);
+    }
+
+    &-current {
+      background-color: var(--ktc-color-primary);
+      color: var(--ktc-color-white);
+    }
+
+    &-next {
+      background-color: var(--ktc-color-gray-300);
+      color: var(--ktc-color-text-primary);
+    }
+  }
+
+  .ktc-stepper-step-label {
+    position: absolute;
+    top: 38px;
+    width: max-content;
+    text-align: center;
+    font-size: var(--ktc-font-size-xs);
+
+    &-prev, &-current {
+      color: var(--ktc-color-text-primary);
+      font-weight: var(--ktc-font-weight-semibold);
+    }
+
+    &-next {
+      color: var(--ktc-color-text-secondary);
+      font-weight: var(--ktc-font-weight-regular);
+    }
+  }
+}
+
+.ktc-stepper-step-bar {
+  display: flex;
+  height: 2px;
+  background: var(--ktc-color-gray-400);
+  min-width: 50px;
+  width: 100%;
+
+  &-next {
+    background-color: var(--ktc-color-gray-400);
+  }
+
+  &-prev, &-current {
+    background-color: var(--ktc-color-primary);
+  }
+}

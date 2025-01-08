@@ -1,0 +1,54 @@
+@use '../../styles/ktcTheme' as ktcTheme;
+
+.ktc-typography-root {
+  margin: 0;
+  font-family: Arial, sans-serif;
+
+  &.ktc-typography-left {
+    text-align: left;
+  }
+
+  &.ktc-typography-center {
+    text-align: center;
+  }
+
+  &.ktc-typography-right {
+    text-align: right;
+  }
+
+  &.ktc-typography-justify {
+    text-align: justify;
+  }
+
+  &.ktc-typography-primary {
+    color: var(--ktc-color-primary);
+  }
+
+  &.ktc-typography-secondary {
+    color: var(--ktc-color-secondary);
+  }
+
+  &.ktc-typography-error {
+    color: var(--ktc-color-error);
+  }
+
+  &.ktc-typography-success {
+    color: var(--ktc-color-success);
+  }
+
+  &.ktc-typography-warning {
+    color: var(--ktc-color-warning);
+  }
+
+  &.ktc-typography-textPrimary {
+    color: var(--ktc-color-text-primary);
+  }
+
+  &.ktc-typography-textSecondary {
+    color: var(--ktc-color-text-secondary);
+  }
+
+  &.ktc-typography-textDisabled {
+    color: var(--ktc-color-text-disabled);
+  }
+}

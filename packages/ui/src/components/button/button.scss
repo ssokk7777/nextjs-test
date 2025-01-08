@@ -1,0 +1,132 @@
+/* button style------------------------------------ */
+@mixin storybook-button($background-color, $border, $color, $hover-background-color, $hover-color, $disabled-border, $disabled-background-color, $disabled-color) {
+  align-items: center;
+  background-color: $background-color;
+  border: $border;
+  border-radius: var(--ktc-radius-s);
+  color: $color;
+  cursor: default;
+  display: inline-flex;
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  transition: background-color 0.3s ease; /* 애니메이션 추가 (선택 사항) */
+
+  &:hover {
+    background-color: $hover-background-color;
+    color: $hover-color;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    border: $disabled-border;
+    background-color: $disabled-background-color;
+    color: $disabled-color;
+    cursor: default;
+  }
+}
+
+$colors: (
+        primary: blue,
+        secondary: grape,
+        success: teal,
+        warning: yellow,
+        error: red
+);
+
+/* filled------------------------------------ */
+.button-filled {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @include storybook-button(var(--ktc-color-#{$name}), 0, var(--ktc-color-white), var(--ktc-color-#{$color}-700), 0, 0, var(--ktc-color-gray-200), var(--ktc-color-gray-500))
+    }
+  }
+}
+
+/* outlined------------------------------------ */
+.button-outlined {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @include storybook-button(var(--ktc-color-white), 1px solid var(--ktc-color-#{$name}), var(--ktc-color-#{$name}), #fcfcfc, var(--ktc-color-#{$color}-700), 1px solid var(--ktc-color-gray-200), var(--ktc-color-white), var(--ktc-color-gray-500))
+    }
+  }
+}
+
+/* standard------------------------------------ */
+.button-standard {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @include storybook-button(var(--ktc-color-white), 0, var(--ktc-color-#{$name}), var(--ktc-color-gray-50), 0, 0, var(--ktc-color-white), var(--ktc-color-gray-500))
+    }
+  }
+}
+
+/* size------------------------------------ */
+@mixin button-size($font-size, $padding, $min-width, $height) {
+  font-size: $font-size;
+  padding: $padding;
+  min-width: $min-width;
+  height: $height;
+}
+
+.storybook-button {
+  &-small { @include button-size(12px, 8px 16px, 70px, 40px) }
+  &-medium { @include button-size(14px, 10px 18px, 80px, 45px) }
+  &-large { @include button-size(16px, 12px 20px, 90px, 50px) }
+}
+
+/* loading------------------------------------ */
+@mixin loading-button($border, $background-color) {
+  border-radius: var(--ktc-radius-s);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:disabled {
+    border: $border;
+    background-color: $background-color;
+    cursor: not-allowed;
+  }
+}
+
+.storybook-button-spin {
+  &-filled { @include loading-button(0, var(--ktc-color-gray-200)) }
+  &-outlined { @include loading-button(1px solid var(--ktc-color-gray-200), var(--ktc-color-white)) }
+  &-standard { @include loading-button(0, var(--ktc-color-white)) }
+}
+
+/* 로딩 애니메이션 스타일 */
+@mixin loader($border-color) {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid $border-color;
+  border-top: 1.5px solid var(--ktc-color-gray-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader {
+  &-filled { @include loader(var(--ktc-color-gray-200)) }
+  &-outlined { @include loader(var(--ktc-color-white)) }
+  &-standard { @include loader(var(--ktc-color-white)) }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+/* icon button------------------------------------ */
+@mixin storybook-icon-button($start, $end) {
+  display: inherit;
+  align-items: center;
+  margin-right: $start;
+  margin-left: $end;
+}
+
+.storybook-icon-button {
+  &-start { @include storybook-icon-button(5px, 0px) }
+  &-end { @include storybook-icon-button(0px, 5px) }
+}

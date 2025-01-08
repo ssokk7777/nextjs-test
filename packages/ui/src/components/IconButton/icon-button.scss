@@ -1,0 +1,40 @@
+@mixin storybook-icon-button($color, $bg-color) {
+    border: 0;
+    border-radius: 3em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-items: center;
+    line-height: 1;
+    padding: 12px;
+    color: $color;
+    background-color: var(--ktc-color-white);
+    
+    &:hover {
+        background-color: $bg-color;
+        transition: background-color 0.3s ease; /* 애니메이션 추가 (선택 사항) */
+    }
+
+    &:disabled {
+      color: var(--ktc-color-gray-500);
+      background-color: var(--ktc-color-gray-200);
+      cursor: default;
+    }
+}
+
+/* color------------------------------------ */
+$colors: (
+        primary: blue,
+        secondary: grape,
+        success: teal,
+        warning: yellow,
+        error: red
+);
+
+.storybook-icon-button {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @include storybook-icon-button(var(--ktc-color-#{$name}), var(--ktc-color-#{$color}-50))
+    }
+  }
+}

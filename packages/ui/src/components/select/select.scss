@@ -1,0 +1,178 @@
+@use '../../styles/ktcTheme' as ktcTheme;
+
+/* Select 전체 wrapper (Label + Select Control) */
+.ktc-select-wrapper {
+  &-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  &-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+  }
+}
+
+/* Label 영역 */
+.ktc-select-label {
+  @extend .ktc-typography-subtitle2;
+  display: flex;
+  width: 100%;
+  max-width: fit-content;
+  gap: 0.3em;
+
+  &-required {
+    color: var(--ktc-color-error);
+    font-weight: var(--ktc-font-weight-bold);
+  }
+}
+
+/* Select Control 영역(Control Box + MenuList 포함) */
+.ktc-select-control {
+  position: relative;
+  min-width: 200px;
+  max-width: 200px;
+  width: 100%;
+}
+
+/* Control Box */
+.ktc-select-controlBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    border-color: var(--ktc-color-primary);
+  }
+
+  &-small {
+    padding: 8px 10px;
+    font-size: var(--ktc-font-size-xs);
+  }
+
+  &-medium {
+    padding: 10px 10px;
+    font-size: var(--ktc-font-size-s);
+  }
+
+  &-outlined {
+    border: 1px solid var(--ktc-color-gray-300);
+    border-radius: var(--ktc-radius-m);
+  }
+
+  &-standard {
+    border-bottom: 1px solid var(--ktc-color-gray-300);
+  }
+
+  &-chevronIcon {
+    min-width: 15px;
+
+    &-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-multiple-chip {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    flex-wrap: wrap;
+    margin-top: -3px;
+    margin-bottom: -3px;
+  }
+}
+
+/* Menu List */
+.ktc-select-menuList {
+  display: none;
+  position: absolute;
+  top: auto;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: var(--ktc-shadow-l);
+  border: 1px solid var(--ktc-color-gray-300);
+
+  &-open {
+    display: block;
+    max-height: 250px;
+    overflow-y: auto;
+  }
+}
+
+/* Menu Item */
+@mixin menuItem($padding, $font-size) {
+  padding: $padding;
+  cursor: pointer;
+  background-color: var(--ktc-color-white);
+  font-size: $font-size;
+  &:hover {
+    background-color: var(--ktc-color-blue-50);
+  }
+}
+
+.ktc-select-menuItem {
+  &-small {
+    @include menuItem(8px 10px, var(--ktc-font-size-xs));
+  }
+
+  &-medium {
+    font-size: var(--ktc-font-size-s);
+    @include menuItem(12px 10px, var(--ktc-font-size-s));
+  }
+
+  &-selected {
+    background-color: var(--ktc-color-blue-50);
+  }
+}
+
+/* Placeholder */
+.ktc-select-placeholder {
+  color: var(--ktc-color-text-secondary);
+}
+
+/* Helper Text */
+.ktc-select-helperText {
+  width: 100%;
+  min-width: 100px;
+  word-wrap: anywhere;
+  color: var(--ktc-color-text-secondary);
+  @extend .ktc-typography-body2;
+}
+
+.ktc-select-disabled {
+  .ktc-select-controlBox {
+    pointer-events: none;
+    @extend .ktc-color-text-disabled;
+    @extend .ktc-color-background-disabled;
+  }
+}
+
+.ktc-select-readonly {
+  .ktc-select-controlBox {
+    pointer-events: none;
+  }
+}
+
+.ktc-select-error {
+  .ktc-select-controlBox {
+    @extend .ktc-select-controlBox;
+    border-color: var(--ktc-color-error);
+
+    &:focus,
+    &:hover {
+      border-color: var(--ktc-color-error);
+    }
+  }
+
+  .ktc-select-helperText {
+    color: var(--ktc-color-text-error);
+  }
+}

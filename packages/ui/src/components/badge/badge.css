@@ -1,0 +1,56 @@
+.ktc-badge-root {
+    display: inline-flex;
+    align-items: center;
+}
+
+.ktc-badge-variant-standard {
+    font-size: var(--ktc-font-size-2xs);
+    line-height: var(--ktc-line-height-2xs);
+    font-weight: var(--ktc-font-weight-regular);
+    min-width: 10px;
+    min-height: 10px;
+    padding: 3px 6px;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -0.8em;
+    right: 0.7em;
+    border-radius: 50%;
+}
+
+.ktc-badge-variant-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    transform: translateX(0) translateY(0);
+    position: relative;
+    top: -0.5em;
+    right: -0.1em;
+}
+
+.ktc-badge-color-primary {
+    color: var(--ktc-color-white);
+    background-color: var(--ktc-color-primary);
+}
+
+.ktc-badge-color-secondary {
+    color: var(--ktc-color-white);
+    background-color: var(--ktc-color-secondary);
+}
+
+.ktc-badge-color-error {
+    color: var(--ktc-color-white);
+    background-color: var(--ktc-color-error);
+}
+
+.ktc-badge-color-success {
+    color: var(--ktc-color-white);
+    background-color: var(--ktc-color-success);
+}
+
+.ktc-badge-color-warning {
+    color: var(--ktc-color-white);
+    background-color: var(--ktc-color-warning);
+}
