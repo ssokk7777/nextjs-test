@@ -1,0 +1,90 @@
+.ktc-paper-root {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease;
+
+  &.ktc-paper-outlined {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    @for $i from 0 through 10 {
+      &.ktc-paper-outlined-elevation-#{$i} {
+        @extend .ktc-paper-elevation-#{$i};
+      }
+    }
+  }
+}
+
+.ktc-paper-elevation-0 {
+  box-shadow: none;
+}
+
+.ktc-paper-elevation-1 {
+  box-shadow:
+    0px 1px 3px rgba(0, 0, 0, 0.2),
+    0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-2 {
+  box-shadow:
+    0px 1px 5px rgba(0, 0, 0, 0.2),
+    0px 2px 2px rgba(0, 0, 0, 0.14),
+    0px 3px 1px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-3 {
+  box-shadow:
+    0px 1px 8px rgba(0, 0, 0, 0.2),
+    0px 3px 4px rgba(0, 0, 0, 0.14),
+    0px 3px 3px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-4 {
+  box-shadow:
+    0px 2px 4px rgba(0, 0, 0, 0.2),
+    0px 3px 3px rgba(0, 0, 0, 0.14),
+    0px 4px 1px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-5 {
+  box-shadow:
+    0px 3px 5px rgba(0, 0, 0, 0.2),
+    0px 4px 4px rgba(0, 0, 0, 0.14),
+    0px 4px 2px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-6 {
+  box-shadow:
+    0px 3px 5px rgba(0, 0, 0, 0.2),
+    0px 5px 4px rgba(0, 0, 0, 0.14),
+    0px 5px 2px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-7 {
+  box-shadow:
+    0px 4px 5px rgba(0, 0, 0, 0.2),
+    0px 5px 6px rgba(0, 0, 0, 0.14),
+    0px 6px 3px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-8 {
+  box-shadow:
+    0px 5px 5px rgba(0, 0, 0, 0.2),
+    0px 6px 7px rgba(0, 0, 0, 0.14),
+    0px 7px 4px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-9 {
+  box-shadow:
+    0px 5px 6px rgba(0, 0, 0, 0.2),
+    0px 7px 8px rgba(0, 0, 0, 0.14),
+    0px 8px 4px rgba(0, 0, 0, 0.12);
+}
+
+.ktc-paper-elevation-10 {
+  box-shadow:
+    0px 6px 6px rgba(0, 0, 0, 0.2),
+    0px 8px 9px rgba(0, 0, 0, 0.14),
+    0px 9px 5px rgba(0, 0, 0, 0.12);
+}

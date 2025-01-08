@@ -1,0 +1,127 @@
+@use '../../styles/ktcTheme' as ktcTheme;
+
+$colors: (
+        primary: var(--ktc-color-primary),
+        secondary: var(--ktc-color-secondary),
+        error: var(--ktc-color-error),
+        info: var(--ktc-color-info),
+        success: var(--ktc-color-success),
+        warning: var(--ktc-color-warning),
+);
+
+@mixin tab-disabled {
+  color: var(--ktc-color-text-disabled);
+  pointer-events: none;
+}
+
+
+.ktc-tabs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+
+  &-fullWidth {
+    .ktc-tab {
+      width: 100%;
+    }
+  }
+
+  &-filled {
+    @each $name, $color in $colors {
+      &-#{$name} {
+        column-gap: 1px;
+
+        .ktc-tab {
+          @extend .ktc-tab-item;
+          color: var(--ktc-color-text-secondary);
+          background-color: var(--ktc-color-gray-100);
+
+          &:hover {
+            background-color: var(--ktc-color-gray-200);
+          }
+
+          &-selected {
+            background-color: $color;
+            color: var(--ktc-color-white);
+
+            &:hover {
+              background-color: $color;
+            }
+          }
+
+          &-disabled {
+            @include tab-disabled;
+          }
+        }
+      }
+    }
+  }
+
+  &-outlined {
+    @each $name, $color in $colors {
+      &-#{$name} {
+        .ktc-tab {
+          @extend .ktc-tab-item;
+          border: 1px solid var(--ktc-color-text-disabled);
+          color: var(--ktc-color-text-secondary);
+
+          &:hover {
+            background-color: var(--ktc-color-gray-100);
+          }
+
+          &-selected {
+            border: 1px solid $color;
+            color: $color;
+
+            &:hover {
+              background-color: var(--ktc-color-white);
+            }
+          }
+
+          &-disabled {
+            @include tab-disabled;
+
+          }
+        }
+      }
+    }
+  }
+
+  &-standard {
+    @each $name, $color in $colors {
+      &-#{$name} {
+        .ktc-tab {
+          @extend .ktc-tab-item;
+          color: var(--ktc-color-text-secondary);
+          border-bottom: 1px solid var(--ktc-color-gray-200);
+
+          &:hover {
+            background-color: var(--ktc-color-gray-100);
+          }
+
+          &-selected {
+            border-bottom: 3px solid $color;
+            color: $color;
+          }
+
+          &-disabled {
+            @include tab-disabled;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ktc-tab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 50px;
+  //width: 100%;
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: var(--ktc-font-size-xs);
+}

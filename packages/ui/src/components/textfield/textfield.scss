@@ -1,0 +1,221 @@
+@mixin focus-hover($color) {
+  &:focus,
+  &:hover {
+    border-color: $color;
+    + .ktc-textfield-label {
+      color: $color;
+    }
+  }
+}
+
+.ktc-textfield {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+
+  &-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &-label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--ktc-color-gray-600);
+    pointer-events: none;
+    transition: 0.2s ease all;
+
+    &--primary {
+      color: var(--ktc-color-primary);
+    }
+    &--secondary {
+      color: var(--ktc-color-secondary);
+    }
+    &--error {
+      color: var(--ktc-color-error);
+    }
+    &--success {
+      color: var(--ktc-color-success);
+    }
+    &--warning {
+      color: var(--ktc-color-warning);
+    }
+
+    &-active {
+      top: -10px;
+      font-size: 12px;
+    }
+  }
+
+  &-input {
+    padding: 12px;
+    font-size: var(--ktc-font-size-m);
+    border-radius: var(--ktc-radius-m);
+    outline: none;
+    width: 100%;
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease;
+    resize: none;
+  }
+
+  &-outlined,
+  &-filled,
+  &-standard {
+    .ktc-textfield-input {
+      &--primary {
+        @include focus-hover(var(--ktc-color-primary));
+      }
+      &--secondary {
+        @include focus-hover(var(--ktc-color-secondary));
+      }
+      &--error {
+        @include focus-hover(var(--ktc-color-error));
+      }
+      &--success {
+        @include focus-hover(var(--ktc-color-success));
+      }
+      &--warning {
+        @include focus-hover(var(--ktc-color-warning));
+      }
+    }
+    &-input-container {
+      position: relative;
+
+      &.ktc-textfield-fullwidth {
+        width: 100%;
+      }
+
+      textarea {
+        padding: 12px;
+        font-size: var(--ktc-font-size-m);
+        border-radius: var(--ktc-radius-m);
+        width: 100%;
+        transition:
+          border-color 0.2s ease,
+          background-color 0.2s ease;
+        resize: none;
+
+        &.ktc-textfield-fullwidth {
+          width: 100%;
+        }
+
+        &--outlined {
+          border: 1px solid var(--ktc-color-gray-300);
+        }
+
+        &--filled {
+          border: none;
+          background-color: var(--ktc-color-gray-100);
+          border-bottom: 1px solid var(--ktc-color-gray-300);
+
+          &:focus {
+            background-color: var(--ktc-color-gray-200);
+          }
+        }
+
+        &--standard {
+          border: none;
+          border-bottom: 1px solid var(--ktc-color-gray-300);
+          border-radius: 0;
+          padding: 12px 0;
+        }
+
+        &.ktc-textfield-error {
+          border-color: var(--ktc-color-error);
+        }
+      }
+    }
+  }
+
+  &-outlined {
+    .ktc-textfield-input {
+      border: 1px solid var(--ktc-color-gray-300);
+    }
+  }
+
+  &-filled {
+    .ktc-textfield-input {
+      border: none;
+      background-color: var(--ktc-color-gray-100);
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--ktc-color-gray-300);
+
+      &:focus {
+        background-color: var(--ktc-color-gray-200);
+      }
+
+      &.ktc-textfield-error {
+        border-bottom: 1px solid var(--ktc-color-error);
+      }
+    }
+  }
+
+  &-standard {
+    .ktc-textfield-input {
+      border: none;
+      border-bottom: 1px solid var(--ktc-color-gray-300);
+      border-radius: 0;
+      padding: 12px 0;
+    }
+  }
+
+  &-small .ktc-textfield-input {
+    padding: 8px 10px;
+    font-size: var(--ktc-font-size-xs);
+  }
+
+  &-medium .ktc-textfield-input {
+    padding: 12px 10px;
+    font-size: var(--ktc-font-size-s);
+  }
+
+  &-large .ktc-textfield-input {
+    padding: 16px 10px;
+    font-size: var(--ktc-font-size-m);
+  }
+
+  &-helperText,
+  &-error {
+    font-size: var(--ktc-font-size-2xs);
+    margin-top: 4px;
+  }
+
+  &-helperText {
+    color: var(--ktc-color-gray-600);
+  }
+
+  &-error {
+    color: var(--ktc-color-error);
+
+    .ktc-textfield-input {
+      border-color: var(--ktc-color-error);
+
+      &:focus,
+      &:hover {
+        border-color: var(--ktc-color-error);
+      }
+    }
+  }
+}
+
+.ktc-textfield-input-container {
+  position: relative;
+}
+
+.ktc-textfield-show-password {
+  position: absolute;
+  right: 0.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}

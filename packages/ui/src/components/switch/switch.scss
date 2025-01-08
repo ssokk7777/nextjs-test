@@ -1,0 +1,130 @@
+@mixin storybook-switch($color) {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  // 기본, 아무 action 없을 때
+  position: relative;
+  border-radius: 20px;
+  background-color: lightgray;
+  box-shadow: 1px 2px 3px #00000020;
+  margin: 0;
+
+  &:checked {
+    background-color: $color;
+  }
+
+  // not-checked 상태로 disabled(배경, 원)
+  &:disabled {
+    opacity: 0.7;
+    background-color: var(--ktc-color-gray-400);
+    cursor: not-allowed;
+  }
+  &:disabled:before {
+    opacity: 0.7;
+    background-color: white;
+  }
+
+  // checked 상태로 disabled(배경, 원)
+  &:checked:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  &:checked:disabled:before {
+    opacity: 0.7;
+    background-color: white;
+  }
+
+  &:disabled + span {
+    color: var(--ktc-color-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:enabled:hover {
+    cursor: pointer;
+  }
+}
+
+
+/* check color------------------------------------ */
+$colors: (
+        primary: var(--ktc-color-primary),
+        secondary: var(--ktc-color-secondary),
+        success: var(--ktc-color-success),
+        warning:  var(--ktc-color-warning),
+        error: var(--ktc-color-error),
+);
+
+.switch-color {
+  @each $name, $color in $colors {
+    &-#{$name} {
+      @include storybook-switch($color)
+    }
+  }
+}
+
+/* check style + size------------------------------------ */
+@mixin switch-style-size($width, $height, $top, $left, $circle-width, $circle-height, $circle-left) {
+  width: $width;
+  height: $height;
+
+  // 원
+  &::before {
+    content: "";
+    position: absolute;
+    top: $top;
+    left: $left;
+    width: $circle-width;
+    height: $circle-height;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: left 250ms linear;
+    transform: scale(0.8);
+    box-shadow: 1px 2px 3px #00000020;
+  }
+
+  // checked 되었을 때, 원
+  &:checked::before {
+    background-color: white;
+    left: $circle-left;
+  }
+}
+
+.storybook-switch-size {
+  &-small { @include switch-style-size(35px, 20px, 0, 0, 20px, 20px, 15px) }
+  &-medium { @include switch-style-size(40px, 24px, 0, 0, 24px, 24px, 16px) }
+  &-large { @include switch-style-size(45px, 28px, 0, 0, 28px, 28px, 17px) }
+}
+
+/* font size------------------------------------ */
+$font-sizes: (
+        'small': var(--ktc-font-size-s),
+        'medium': var(--ktc-font-size-m),
+        'large': var(--ktc-font-size-l)
+);
+
+@mixin font-size($size) {
+  font-size: $size;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 10px;
+}
+
+.storybook-font {
+  @each $name, $size in $font-sizes {
+    &-#{$name} {
+
+      &-enabled {
+        @include font-size($size);
+        cursor: pointer;
+      }
+
+      &-disabled {
+        @include font-size($size);
+        color: var(--ktc-color-text-disabled);
+        cursor: not-allowed;
+      }
+    }
+  }
+}

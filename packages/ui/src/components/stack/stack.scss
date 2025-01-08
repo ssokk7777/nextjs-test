@@ -1,0 +1,16 @@
+.ktc-stack-root {
+  display: flex;
+}
+.ktc-stack-row {
+  flex-direction: row;
+}
+.ktc-stack-row-reverse {
+  flex-direction: row-reverse;
+}
+.ktc-stack-column {
+  flex-direction: column;
+}
+.ktc-stack-column-reverse {
+  flex-direction: column-reverse;
+}
+

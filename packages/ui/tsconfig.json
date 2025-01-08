@@ -1,0 +1,31 @@
+{
+  "extends": "../typescript-config/index.json",
+  "compilerOptions": {
+    "paths": {
+      "@kt-cloud-front/ui/*": [
+        "./src/*"
+      ]
+    },
+    "outDir": "dist",
+    "moduleResolution": "bundler",
+    // 번들러의 모듈 해석 방식을 따름
+    "declaration": true,
+    // .d.ts 타입 선언 파일 생성
+    "isolatedModules": true
+    // 단일 파일 단위의 트랜스파일링 보장
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    ".storybook/*.ts"
+  ],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules",
+    "storybook-static",
+    ".turbo"
+  ]
+}
